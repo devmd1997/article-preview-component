@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+    /* Colors */
+    --color-dark-grayish-blue: hsl(217, 19%, 35%);
+    --color-dark-blue: hsl(214, 17%, 51%);
+    --color-grayish-blue:  hsl(212, 23%, 69%);
+    --color-light-grayish-blue: hsl(210, 46%, 95%);
+    --color-white: hsl(0, 0%, 100%);
+
+    /* Typography */
+    --font-manrope: 'Manrope', sans-serif;
+    
+    --text-lg: 20px;
+    --text-lg-line-height: 130%;
+    --text-base: 13px;
+    --text-base-line-height: 140%;
+
+    /* Spacing */
+    --spacing: 4px;
+
+    --breakpoint-lg: 1440px;
+    --breakpoint-md: 768px;
+    --breakpoint-sm: 375px;
+}
