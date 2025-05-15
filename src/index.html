@@ -16,21 +16,126 @@
 </head>
 <body>
 
-  Shift the overall look and feel by adding these wonderful 
-  touches to furniture in your home
-
-  Ever been in a room and felt like something was missing? Perhaps 
-  it felt slightly bare and uninviting. I’ve got some simple tips 
-  to help you make any room feel complete.
-
-  Michelle Appleton
-  28 Jun 2020
-
-  Share
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+  <div class="card">
+    <div class="bg-[url('../images/drawers.jpg')] max-md:h-[200px] max-md:w-full md:w-full bg-cover bg-center"></div>
+    <div class="text-content">
+      <div class="text-preset-1 text-grey-900">
+        Shift the overall look and feel by adding these wonderful
+        touches to furniture in your home
+      </div>
+      <div class="text-preset-2 font-medium text-grey-500">
+        Ever been in a room and felt like something was missing? Perhaps
+        it felt slightly bare and uninviting. I’ve got some simple tips
+        to help you make any room feel complete.
+      </div>
+      <div id="footer" class="footer-content">
+        <div id="profile" class="profile-content">
+          <img class="profile-image" src="../images/avatar-michelle.jpg" alt="avatar" />
+          <div class="flex flex-col">
+            <div class="font-bold text-preset-2 text-grey-900">Michelle Appleton</div>
+            <div class="font-medium text-preset-2 text-grey-400">28 Jun 2020</div>
+          </div>
+        </div>
+        <div class="relative inline-block">
+          <div id="share-hover" class="share-hover-container hidden">
+            <div class="flex flex-row gap-6 items-center">
+              <div class="text-preset-3 tracking-[25%] uppercase text-grey-400">Share</div>
+              <div class="share-icons">
+                <object class="w-[20px] h-[20px]" data="../images/icon-facebook.svg" type="image/svg+xml"></object>
+                <object class="w-[20px] h-[20px]" data="../images/icon-twitter.svg" type="image/svg+xml"></object>
+                <object class="w-[20px] h-[20px]" data="../images/icon-pinterest.svg" type="image/svg+xml"></object>
+              </div>
+            </div>
+            <div class="tooltip-arrow-down border-t-grey-900"></div>
+          </div>
+          <button id="share-button" class="share-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 15 13" aria-label="share" role="img">
+              <path d="M15 6.495L8.766.014V3.88H7.441C3.33 3.88 0 7.039 0 10.936v2.049l.589-.612C2.59 10.294 5.422 9.11 8.39 9.11h.375v3.867L15 6.495z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Footer end -->
+    </div>
+    <!-- Card end -->
+    <div id="footer-share" class="footer-content-share fill-white hidden">
+      <div class="flex flex-row gap-6 items-center">
+        <div class="text-preset-3 tracking-[25%] uppercase text-grey-400">Share</div>
+        <div class="flex flex-row gap-4 items-center">
+          <object class="w-[20px] h-[20px]" data="../images/icon-facebook.svg" type="image/svg+xml"></object>
+          <object class="w-[20px] h-[20px]" data="../images/icon-twitter.svg" type="image/svg+xml"></object>
+          <object class="w-[20px] h-[20px]" data="../images/icon-pinterest.svg" type="image/svg+xml"></object>
+        </div>
+      </div>
+      <button id="share-button-active" class="share-button share-button-active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="13" viewBox="0 0 15 13" aria-label="share" role="img">
+          <path d="M15 6.495L8.766.014V3.88H7.441C3.33 3.88 0 7.039 0 10.936v2.049l.589-.612C2.59 10.294 5.422 9.11 8.39 9.11h.375v3.867L15 6.495z"/>
+        </svg>
+      </button>
+    </div>
   </div>
+
+  <script>
+    const footer = document.querySelector('#footer');
+    const footerShare = document.querySelector('#footer-share');
+    const shareHover = document.querySelector('#share-hover');
+    const shareButton = document.querySelector('#share-button');
+    const shareButtonActive = document.querySelector('#share-button-active');
+
+    const mediumBreakpoint = 768;
+
+    let isShareViewActive = false;
+    
+
+    const manageShareVisibility = () => {
+      const isDesktop = window.innerWidth >= mediumBreakpoint;
+      
+      if(isDesktop) {
+        if (footer) footer.classList.remove('hidden');
+        if (footerShare) footerShare.classList.add('hidden');
+        if (isShareViewActive) {
+          shareButton.classList.add('share-button-active');
+          if (shareHover) shareHover.classList.remove('hidden');
+        }
+      }
+      else {
+        if (shareHover) shareHover.classList.add('hidden');
+        if (isShareViewActive) {
+          if (footerShare) footerShare.classList.remove('hidden');
+          if (footer) footer.classList.add('hidden');
+        }
+        else {
+          if (footerShare) footerShare.classList.add('hidden');
+          if (footer) footer.classList.remove('hidden');
+        }
+      }
+    }
+
+    const toggleShareView = () => {
+      isShareViewActive = !isShareViewActive;
+
+      if(window.innerWidth <= mediumBreakpoint) {
+        footer.classList.toggle('hidden');
+        footerShare.classList.toggle('hidden');
+      }
+      else {
+        shareHover.classList.toggle('hidden');
+        shareButton.classList.toggle('share-button-active');
+      }
+    }
+
+    manageShareVisibility();
+    window.addEventListener('resize', manageShareVisibility);
+
+    if (shareButton) {
+      shareButton.addEventListener('click', toggleShareView);
+    }
+
+    if (shareButtonActive) {
+      shareButtonActive.addEventListener('click', toggleShareView);
+    }
+
+
+  </script>
 </body>
 </html>

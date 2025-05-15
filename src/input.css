@@ -3,6 +3,10 @@
 
 @theme {
     /* Colors */
+    --color-grey-900: #48556A;
+    --color-grey-500: #6E8098;
+    --color-grey-400: #9DAEC2;
+    --color-grey-200: #ECF2F8;
     --color-dark-grayish-blue: hsl(217, 19%, 35%);
     --color-dark-blue: hsl(214, 17%, 51%);
     --color-grayish-blue:  hsl(212, 23%, 69%);
@@ -23,4 +27,86 @@
     --breakpoint-lg: 1440px;
     --breakpoint-md: 768px;
     --breakpoint-sm: 375px;
+}
+
+@layer base {
+    body {
+        @apply bg-light-grayish-blue font-manrope min-h-screen flex items-center justify-center
+    }
+}
+
+
+@layer utilities {
+    .text-preset-1 {
+        @apply font-bold text-lg tracking-[0.25px]
+    }
+
+    .text-preset-2 {
+        @apply text-base tracking-[0.12%]
+    }
+
+    .text-preset-3 {
+        @apply font-bold text-base tracking-[0.12%]
+    }
+
+    .text-preset-4 {
+        @apply text-base tracking-[25%] uppercase
+    }
+}
+
+@layer components {
+    .card {
+        @apply flex flex-col md:flex-row md:items-stretch md:mx-20 md:max-w-[730px] bg-white items-center mx-6 rounded-[10px] shadow-[0_40px_20px_-10px_rgba(201,213,225,.50)]
+    }
+
+    .text-content {
+        @apply w-full flex flex-col gap-12 p-8 max-md:pb-4 md:gap-8
+    }
+
+    .footer-content {
+        @apply flex flex-row justify-between items-center w-full
+    }
+
+    .footer-content-share {
+        @apply bg-grey-900 flex flex-row justify-between items-center w-full;
+        @apply px-8 py-4 mt-8;
+        @apply rounded-b-[10px]; 
+    }
+
+    .share-hover-container {
+        @apply bg-grey-900 flex flex-row items-center gap-8 py-4 px-8 rounded-[10px] absolute shadow-[0_10px_10px_rgba(201,213,225,.50)] z-10;
+        @apply bottom-full left-1/2 -translate-x-1/2 mb-6;
+    }
+
+    .share-button {
+        @apply w-[32px] h-[32px] flex items-center justify-center rounded-full bg-grey-200
+    }
+
+    .share-button-active {
+        @apply bg-grey-500 fill-white
+    }
+
+    .share-icons {
+        @apply flex flex-row gap-4 items-end
+    }
+
+    .tooltip-arrow-down {
+        @apply absolute left-1/2 -translate-x-1/2 top-full; /* Positions the arrow at the bottom-center of its parent */
+        @apply w-0 h-0; /* Essential for the border-based triangle */
+        /* Defines the triangle size: base width 16px (8px+8px), height 8px */
+        border-left-width: 8px;
+        border-right-width: 8px;
+        border-top-width: 8px;
+        /* Make side borders transparent */
+        @apply border-l-transparent border-r-transparent;
+        /* The color is applied via a utility class, e.g., border-t-grey-900 */
+    }
+
+    .profile-content {
+        @apply flex flex-row gap-4
+    }
+
+    .profile-image {
+        @apply w-[40px] h-[40px] rounded-full
+    }
 }
